@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Practice Station</title>
+   
+    <meta property="og:image" content="image.png" />
+    <meta name="twitter:card" content="twitter_card_name" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  </head>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 5%;
+      width: 100vw;
+      height: 100vh;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    div.container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    img#cover {
+      position: absolute;
+      z-index: 1;
+      top: 0%;
+      left: 50%;
+      height: auto;
+      width: 25%;
+    }
+
+   img#name {
+  position: absolute;
+  z-index: 0;
+  width: 70%;   
+  height: auto;
+}
+
+    @media screen and (max-width: 692px) {
+      img#cover {
+        width: 75%;
+      }
+    }
+  </style>
+
+  <body>
+  <div class="container">
+    <img id="cover" src="youlovingthemessinessofherlife.png" />
+    <img id="name" src="practicestationname.png" />
+  </div>
+
+  <audio controls>
+    <source src="https://s4.radio.co/sc3f495d3c/listen" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</body>
+
+  <script>
+    window.onload = function () {
+      const imgElement = document.getElementById("cover");
+      const nameElement = document.getElementById("name");
+
+      imgElement.style.top = getRandomY(imgElement) + "px";
+      imgElement.style.left = getRandomX(imgElement) + "px";
+      nameElement.style.top = getRandomY(nameElement) + "px";
+      nameElement.style.left = getRandomX(nameElement) + "px";
+    };
+
+    function getRandomY(element) {
+      const clientHeight = element.clientHeight;
+      const random = Math.random();
+      let randomY = element.parentElement.clientHeight * random;
+
+      let y = randomY - clientHeight;
+
+      if (y < 0) {
+        y = 0;
+      } else if (y + clientHeight > element.parentElement.clientHeight) {
+        y = element.parentElement.clientHeight - clientHeight;
+      }
+
+      return y;
+    }
+
+    function getRandomX(element) {
+      const clientWidth = element.clientWidth;
+      const random = Math.random();
+      let randomX = element.parentElement.clientWidth * random;
+
+      let x = randomX - clientWidth;
+
+      if (x < 0) {
+        x = 0;
+      } else if (x + clientWidth > element.parentElement.clientWidth) {
+        x = element.parentElement.clientWidth - clientWidth;
+      }
+      return x;
+    }
+  </script>
+</html>
